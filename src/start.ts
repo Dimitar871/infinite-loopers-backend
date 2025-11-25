@@ -5,9 +5,12 @@ Dotenv.config({ path: '.env' });
 import IndexRouter from './routes/index.js';
 import { errorHandler } from './middleware/errors/errorHandler.js';
 import helmet from 'helmet';
+import cors from 'cors';
 
 const app: Application = Express();
 const port: number = process.env.PORT ? parseInt(process.env.PORT) : 3010;
+
+app.use(cors()); 
 
 // security middleware
 app.use(helmet());
