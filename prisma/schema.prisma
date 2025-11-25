@@ -18,4 +18,16 @@ model Client {
   createdAt DateTime @default(now())
   email     String   @unique
   name      String?
+  tasks     Task[]
 }
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  clientId    Int
+  client      Client     @relation(fields: [clientId], references: [id])
+  name      String
+  endDate   DateTime?
+  category  String?
+  createdAt DateTime @default(now())
+}
+
