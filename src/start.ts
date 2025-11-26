@@ -11,7 +11,7 @@ import cors from 'cors';
 const app: Application = Express();
 const port: number = process.env.PORT ? parseInt(process.env.PORT) : 3012;
 
-
+// CORS configuration
 app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true,
