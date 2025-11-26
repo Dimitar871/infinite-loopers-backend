@@ -4,6 +4,10 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// client      Client     @relation(fields: [clientId], references: [id])
+//  tasks     Task[]
+
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,13 +22,11 @@ model Client {
   createdAt DateTime @default(now())
   email     String   @unique
   name      String?
-  tasks     Task[]
 }
 
 model Task {
   id        Int      @id @default(autoincrement())
   clientId    Int
-  client      Client     @relation(fields: [clientId], references: [id])
   name      String
   endDate   DateTime?
   category  String?
