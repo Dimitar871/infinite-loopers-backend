@@ -19,7 +19,7 @@ export async function register(req: Request, res: Response, next: NextFunction):
     });
 
     if (existingUser) {
-      res.status(400).json({ success: false, message: 'Username aready taken' });
+      res.status(400).json({ success: false, message: 'Username aready taken try with another one' });
       return;
     }
 
