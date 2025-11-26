@@ -5,7 +5,10 @@
       "Bash(findstr:*)",
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
-      "Bash(taskkill /F /PID 35552)"
+      "Bash(taskkill /F /PID 35552)",
+      "Bash(tree:*)",
+      "Bash(npm install:*)",
+      "Bash(npm test:*)"
     ],
     "deny": [],
     "ask": []
