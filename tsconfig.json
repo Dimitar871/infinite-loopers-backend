@@ -21,7 +21,7 @@
     },
     "include": [
         "src/**/*",
-        "prisma/seed.ts", "prisma/types.ts",
+        "prisma/seed.ts", "prisma/types.ts", "tests/authController.test.ts",
     ],
     "exclude": [
         "node_modules",
