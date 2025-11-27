@@ -10,8 +10,11 @@
     "postinstall": "prisma generate",
     "dev": "nodemon --watch src --ext ts --exec tsx src/start.ts",
     "start": "tsx src/start.ts",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
   },
+  
   "dependencies": {
     "@prisma/client": "^6.14.0",
     "bcryptjs": "^3.0.3",
@@ -25,6 +28,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
     "@typescript-eslint/eslint-plugin": "^8.40",
     "@typescript-eslint/parser": "^8.40",
@@ -34,6 +38,7 @@
     "eslint-plugin-jsdoc": "^54.1.1",
     "jest": "^30.2.0",
     "prisma": "^6.14.0",
+    "ts-jest": "^29.4.5",
     "tsx": "^4.20.4",
     "typescript": "5.9"
   }
