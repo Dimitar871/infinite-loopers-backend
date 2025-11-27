@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// This function gets tasks for a specific user
 export async function getTasks(req: Request, res: Response, next: NextFunction) {
 	try {
 		const userId = parseInt(req.params.userId);
@@ -18,25 +19,29 @@ export async function getTasks(req: Request, res: Response, next: NextFunction) 
 	}
 }
 
-
+// This function creates a new task
 export async function addTask(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { title, endDate, category } = req.body;
+    const { title, endDate, category, priority, UserId } = req.body;
 
+    // Basic validation
     if (!title) {
       res.status(400).json({ success: false, message: 'Task title is required' });
       return;
     }
 
-    const task = {
-      UserId: 1,
-      title,
-      endDate: endDate ? new Date(endDate) : null,
-      status: "Not Started",
-      category: category || null,
-    };
+    const createdTask = await prisma.task.create({
+      data: {
+        UserId: Number(UserId),
 
-    const createdTask = await prisma.task.create({ data: task });
+        title,
+        endDate: endDate ? new Date(endDate) : null,
+        status: "Not Started",
+        category: category || null,
+
+        priority: priority || "Medium"
+      }
+    });
 
     res.status(201).json({
       success: true,

@@ -14,21 +14,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String   @unique
   username  String   @unique
   password  String
+  
+  tasks     Task[]
 }
-
 
 model Task {
   id        Int      @id @default(autoincrement())
+  
   UserId    Int
-  title      String
+  user      User     @relation(fields: [UserId], references: [id])
+  
+  title     String
   endDate   DateTime?
   status    String   @default("Not Started")
+  
+  // Gave it a default so it doesn't break if you forget to fill it in
+  priority  String   @default("Medium") 
+  
   category  String?
   createdAt DateTime @default(now())
 }
